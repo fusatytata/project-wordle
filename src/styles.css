@@ -22,7 +22,8 @@ html {
 */
 body {
   font-family: sans-serif;
-  background-color: rgb(8, 54, 31);
+  background-color: rgb(119, 34, 140);
+  color: #bada55
 }
 
 @media (max-height: 600px) {
