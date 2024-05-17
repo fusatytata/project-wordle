@@ -1,3 +1,9 @@
+# My final project for the Joy of React course. 
+
+## The purpose was not to build the entire application by myself and from scratch, but to familiarize myself with the already detailed application, find its errors and shortcomings, and most importantly incorporate the acquired knowledge of React into it.
+
+
+
 # Word Game
 
 ## Joy of React, Project I
