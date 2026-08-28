@@ -4,276 +4,344 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Petra Šmídová — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#fdfdfb;
-    --ink:#171717;
-    --muted:#8a8a85;
-    --faint:#c9c7c0;
-    --line:#ececE6;
-    --accent:#3f9d70;
+    --bg:#faf9f6;
+    --ink:#141414;
+    --muted:#6f6d68;
+    --line:#e7e4dc;
+    --amber:#eaa021;
+    --coral:#e8583c;
+    --teal:#7fcfc9;
+    --dark:#141414;
   }
   *{box-sizing:border-box;}
   html,body{margin:0;padding:0;}
   body{
     background:var(--bg);
     color:var(--ink);
-    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
-    line-height:1.65;
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.6;
     -webkit-font-smoothing:antialiased;
-    font-size:16px;
   }
-  a{color:inherit;}
-  .wrap{
-    max-width:640px;
-    margin:0 auto;
-    padding:0 24px;
+  h1,h2,h3,h4{
+    font-family:'Poppins','Inter',sans-serif;
+    font-weight:800;
+    letter-spacing:-.02em;
+    margin:0;
   }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- nav ---------- */
+  .topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:26px 0;
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;}
+  .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--amber);flex:none;}
+  .brand .role-tag{color:var(--muted);font-weight:500;font-size:.92rem;}
+  .navlinks{display:flex;gap:22px;font-size:.92rem;font-weight:600;}
+  .navlinks a{border-bottom:2px solid transparent;padding-bottom:2px;}
+  .navlinks a:hover{border-color:var(--coral);}
 
   /* ---------- hero ---------- */
   .hero{
-    padding:88px 0 56px;
-    display:flex;
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:56px;
     align-items:center;
-    gap:24px;
+    padding:40px 0 84px;
   }
-  .avatar{
-    width:76px;height:76px;
+  .photo-circle{
+    width:280px;height:280px;
     border-radius:50%;
-    flex:none;
-    overflow:hidden;
-    background:#efece3;
+    background:linear-gradient(160deg,#e2ded1,#cfc9b8);
     display:flex;align-items:center;justify-content:center;
+    overflow:hidden;
+    flex:none;
   }
-  .avatar img{width:100%;height:100%;object-fit:cover;display:block;}
-  .avatar svg{width:46%;height:46%;color:#b3b0a4;}
-  .hero .kicker{
-    text-transform:uppercase;
-    letter-spacing:.14em;
-    font-size:.7rem;
-    color:var(--accent);
-    font-weight:600;
-    margin-bottom:10px;
-  }
-  .hero h1{
-    font-size:2.3rem;
-    font-weight:600;
-    letter-spacing:-.02em;
-    margin:0 0 6px;
-  }
-  .hero .role{
-    color:var(--muted);
-    font-size:1rem;
-  }
-
-  .lede{
-    padding-bottom:48px;
-    font-size:1.08rem;
-    color:#3a3a37;
-    max-width:54ch;
-  }
-
-  .contact-row{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-    padding-bottom:56px;
-    font-size:.88rem;
-  }
-  .contact-row a{
-    color:var(--muted);
-    text-decoration:none;
-    border-bottom:1px solid transparent;
-  }
-  .contact-row a:hover{color:var(--accent);border-color:var(--accent);}
-
-  hr.rule{
-    border:none;
-    border-top:1px solid var(--line);
-    margin:0 0 48px;
-  }
-
-  /* ---------- section label ---------- */
-  .section-label{
-    text-transform:uppercase;
-    letter-spacing:.14em;
-    font-size:.72rem;
-    color:var(--muted);
-    font-weight:600;
+  .photo-circle img{width:100%;height:100%;object-fit:cover;filter:grayscale(1);}
+  .photo-circle svg{width:42%;height:42%;color:#a39c88;}
+  .hero h1{font-size:4.4rem;margin-bottom:10px;}
+  .hero h3{font-size:1.15rem;font-weight:700;margin-bottom:12px;}
+  .hero p.about{
+    max-width:52ch;
+    color:#3b3a36;
+    font-size:1.02rem;
     margin-bottom:28px;
   }
+  .pill-row{display:flex;gap:14px;flex-wrap:wrap;}
+  .pill{
+    padding:14px 26px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:.95rem;
+    color:var(--dark);
+    display:inline-block;
+    transition:transform .15s ease;
+  }
+  .pill:hover{transform:translateY(-2px);}
+  .pill.amber{background:var(--amber);}
+  .pill.coral{background:var(--coral);color:#fff;}
+  .pill.teal{background:var(--teal);}
 
-  /* ---------- article list ---------- */
-  .pieces{margin-bottom:64px;}
-  .piece{
+  /* ---------- section shell ---------- */
+  section.block{padding:64px 0;border-top:1px solid var(--line);}
+  section.block > h2{font-size:2.2rem;margin-bottom:44px;}
+
+  .grid2{
     display:grid;
-    grid-template-columns:34px 1fr;
-    gap:0 20px;
-    padding:34px 0;
+    grid-template-columns:200px 1fr;
+    gap:32px;
+    margin-bottom:44px;
+  }
+  .grid2:last-child{margin-bottom:0;}
+  .grid-label{
+    font-weight:700;
+    font-size:1.05rem;
+    color:var(--ink);
+  }
+  .grid-label small{
+    display:block;
+    font-weight:500;
+    color:var(--muted);
+    font-size:.82rem;
+    margin-top:6px;
+  }
+
+  .timeline-item{
+    display:grid;
+    grid-template-columns:110px 1fr;
+    gap:20px;
+    padding:22px 0;
     border-bottom:1px solid var(--line);
   }
-  .piece:first-child{border-top:1px solid var(--line);}
-  .piece .idx{
-    font-variant-numeric:tabular-nums;
-    color:var(--faint);
+  .timeline-item:first-child{border-top:1px solid var(--line);}
+  .timeline-item .year{
     font-size:.85rem;
-    padding-top:3px;
-  }
-  .piece h2{
-    font-size:1.12rem;
-    font-weight:600;
-    letter-spacing:-.01em;
-    margin:0 0 8px;
-    line-height:1.4;
-  }
-  .piece .tags{
-    display:flex;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-bottom:12px;
-  }
-  .tag{
-    font-size:.7rem;
-    text-transform:uppercase;
-    letter-spacing:.05em;
     color:var(--muted);
-    background:#f2f1ea;
-    padding:3px 9px;
-    border-radius:100px;
-  }
-  .piece p.desc{
-    margin:0 0 14px;
-    color:#4a4a46;
-    font-size:.96rem;
-    max-width:56ch;
-  }
-  .readlink{
-    display:inline-flex;
-    align-items:center;
-    gap:5px;
-    background:none;
-    border:none;
-    padding:0;
-    font:inherit;
-    font-size:.88rem;
     font-weight:600;
-    color:var(--accent);
-    cursor:pointer;
+    padding-top:3px;
+    font-variant-numeric:tabular-nums;
   }
-  .readlink svg{width:13px;height:13px;transition:transform .15s;}
-  .readlink:hover svg{transform:translate(2px,-2px);}
-
-  .piece.upcoming{opacity:.75;}
-  .piece.upcoming h2{color:#57564f;}
-  .piece.upcoming .tag{background:transparent;border:1px dashed var(--faint);}
-  .piece.upcoming .readlink{color:var(--muted);cursor:default;}
-  .piece.upcoming .readlink:hover svg{transform:none;}
-
-  /* ---------- about ---------- */
-  .about{
-    padding-bottom:56px;
+  .timeline-item h4{font-size:1.08rem;margin-bottom:8px;}
+  .timeline-item .meta{
+    font-size:.76rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--muted);
+    margin-bottom:10px;
   }
-  .about p{
-    max-width:56ch;
-    color:#3a3a37;
+  .timeline-item p{margin:0 0 14px;color:#3b3a36;font-size:.96rem;max-width:56ch;}
+  .readlink{
+    display:inline-flex;align-items:center;gap:6px;
+    background:none;border:none;padding:0;
+    font:inherit;font-weight:700;font-size:.88rem;
+    color:var(--coral);cursor:pointer;
+  }
+  .readlink svg{width:13px;height:13px;}
+
+  .timeline-item.upcoming{opacity:.7;}
+  .timeline-item.upcoming .readlink{color:var(--muted);}
+
+  ul.skills{
+    list-style:none;
+    margin:0;padding:0;
+    display:grid;
+    gap:12px;
+  }
+  ul.skills li{
+    padding-left:22px;
+    position:relative;
+    font-size:.98rem;
+  }
+  ul.skills li::before{
+    content:"";
+    position:absolute;left:0;top:.55em;
+    width:8px;height:8px;border-radius:50%;
+    background:var(--teal);
   }
 
-  footer{
-    color:var(--faint);
-    font-size:.78rem;
-    padding:0 0 60px;
+  /* ---------- footer ---------- */
+  footer.dark{
+    background:var(--dark);
+    color:#f2f0ea;
+    border-radius:36px 36px 0 0;
+    margin-top:20px;
+    padding:56px 0 40px;
+  }
+  footer.dark .wrap{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:32px;
+  }
+  footer.dark h5{
+    font-family:'Poppins',sans-serif;
+    font-weight:700;
+    font-size:.85rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:#a8a59c;
+    margin:0 0 8px;
+  }
+  footer.dark a{font-size:1.05rem;font-weight:600;}
+  footer.dark a:hover{color:var(--coral);}
+  .copy{
+    text-align:center;
+    color:#7d7a72;
+    font-size:.8rem;
+    padding-top:40px;
   }
 
-  @media (max-width:520px){
-    .hero{padding-top:64px;flex-direction:column;align-items:flex-start;}
-    .hero h1{font-size:1.9rem;}
-    .piece{grid-template-columns:24px 1fr;}
+  @media (max-width:680px){
+    .hero{grid-template-columns:1fr;text-align:center;}
+    .photo-circle{margin:0 auto;width:200px;height:200px;}
+    .hero h1{font-size:3rem;}
+    .pill-row{justify-content:center;}
+    .grid2{grid-template-columns:1fr;gap:14px;}
+    .timeline-item{grid-template-columns:1fr;}
+    .navlinks{gap:14px;font-size:.85rem;}
   }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <div class="hero">
-    <div class="avatar">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+<div class="wrap">
+  <nav class="topbar">
+    <div class="brand"><span class="dot"></span> Petra Šmídová <span class="role-tag">· žurnalistika</span></div>
+    <div class="navlinks">
+      <a href="#zivotopis">Životopis</a>
+      <a href="#clanky">Články</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="photo-circle">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
     </div>
     <div>
-      <div class="kicker">Portfolio</div>
-      <h1>Petra Šmídová</h1>
-      <div class="role">Žurnalistika · média · zahraniční dění</div>
+      <h1>Ahoj</h1>
+      <h3>Pár slov o mně</h3>
+      <p class="about">Studuji žurnalistiku a obecnou lingvistiku. Zajímá mě světové dění, politika, společnost a kultura — vedle psaní se věnuji i festivalové a kulturní produkci. Tohle je výběr textů, které jsem zatím napsala.</p>
+      <div class="pill-row">
+        <a class="pill amber" href="#zivotopis">Životopis</a>
+        <a class="pill coral" href="#clanky">Články</a>
+        <a class="pill teal" href="#kontakt">Kontakt</a>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <p class="lede">Studuji žurnalistiku a obecnou lingvistiku. Zajímá mě světové dění, politika, společnost a kultura — vedle psaní se věnuji i festivalové a kulturní produkci. Tohle je výběr textů, které jsem zatím napsala.</p>
+  <section class="block" id="zivotopis">
+    <h2>Životopis</h2>
 
-  <div class="contact-row">
-    <a href="mailto:petja.smidova@gmail.com">petja.smidova@gmail.com</a>
-    <a href="tel:+420775953951">+420 775 953 951</a>
-  </div>
-
-  <hr class="rule">
-
-  <div class="section-label">Publikované texty</div>
-
-  <div class="pieces">
-
-    <div class="piece">
-      <div class="idx">01</div>
-      <div>
-        <h2>Demonstrace, Fico a ministryně kultury. Co se děje na Slovensku?</h2>
-        <div class="tags"><span class="tag">Houpací Osel</span><span class="tag">2025</span><span class="tag">Evropa / společnost</span></div>
-        <p class="desc">Přehled aktuálního politického a společenského dění na Slovensku — protesty proti vládě Roberta Fica a změny ve vedení kulturních institucí.</p>
-        <button type="button" class="readlink">Číst článek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+    <div class="grid2">
+      <div class="grid-label">Vzdělání</div>
+      <div class="timeline-item" style="border-top:1px solid var(--line);border-bottom:none;padding-top:0;">
+        <div class="year">2023–dosud</div>
+        <div>
+          <h4>Žurnalistika a obecná lingvistika</h4>
+          <p>Studium se zaměřením na mediální produkci, psaní a jazyk.</p>
+        </div>
       </div>
     </div>
 
-    <div class="piece">
-      <div class="idx">02</div>
+    <div class="grid2">
+      <div class="grid-label">Zájmy<br>&amp; zaměření</div>
       <div>
-        <h2>Rape academy a 62 milionů. Proč je důležité o tom nepřestat mluvit?</h2>
-        <div class="tags"><span class="tag">Houpací Osel</span><span class="tag">2026</span><span class="tag">Svět / společnost</span></div>
-        <p class="desc">Rozkrytí tzv. online „rape academy“ a jejího průniku s manosférou — a proč v této debatě neplatí tvrzení „ne všichni muži“.</p>
-        <button type="button" class="readlink">Číst článek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+        <ul class="skills">
+          <li>Zahraniční dění a politika</li>
+          <li>Společnost a lidská práva</li>
+          <li>Kultura a hudební publicistika</li>
+          <li>Festivalová a kulturní produkce</li>
+        </ul>
       </div>
     </div>
+  </section>
 
-    <div class="piece">
-      <div class="idx">03</div>
+  <section class="block" id="clanky">
+    <h2>Publikované texty</h2>
+
+    <div class="grid2">
+      <div class="grid-label">4 texty <small>2024–2026<br>Houpací Osel, Pres.UP</small></div>
       <div>
-        <h2>Stockhausenovo Fresco rozeznělo brněnský Besední dům</h2>
-        <div class="tags"><span class="tag">Pres.UP</span><span class="tag">2024</span><span class="tag">Publicistika / kultura</span></div>
-        <p class="desc">Text o české premiéře pětihodinové performance Fresco a o tom, jak její netradiční prostorové uspořádání proměnilo zkušenost posluchačů.</p>
-        <button type="button" class="readlink">Číst článek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+
+        <div class="timeline-item">
+          <div class="year">2025</div>
+          <div>
+            <h4>Demonstrace, Fico a ministryně kultury. Co se děje na Slovensku?</h4>
+            <div class="meta">Houpací Osel · Evropa / společnost</div>
+            <p>Přehled aktuálního politického a společenského dění na Slovensku — protesty proti vládě Roberta Fica a změny ve vedení kulturních institucí.</p>
+            <button type="button" class="readlink">Číst článek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2026</div>
+          <div>
+            <h4>Rape academy a 62 milionů. Proč je důležité o tom nepřestat mluvit?</h4>
+            <div class="meta">Houpací Osel · Svět / společnost</div>
+            <p>Rozkrytí tzv. online „rape academy“ a jejího průniku s manosférou — a proč v této debatě neplatí tvrzení „ne všichni muži“.</p>
+            <button type="button" class="readlink">Číst článek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2024</div>
+          <div>
+            <h4>Stockhausenovo Fresco rozeznělo brněnský Besední dům</h4>
+            <div class="meta">Pres.UP · Publicistika / kultura</div>
+            <p>Text o české premiéře pětihodinové performance Fresco a o tom, jak její netradiční prostorové uspořádání proměnilo zkušenost posluchačů.</p>
+            <button type="button" class="readlink">Číst článek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="year">2025</div>
+          <div>
+            <h4>Improvizační cimbálový koncert i noisové tektonické desky. Ostrava uctila památku obětí střelby na FF UK</h4>
+            <div class="meta">Pres.UP · Publicistika / kultura</div>
+            <p>Text o pietním koncertu v Ostravě, který spojil improvizovanou hudbu a noise s připomínkou obětí střelby na Filozofické fakultě UK.</p>
+            <button type="button" class="readlink">Číst článek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+          </div>
+        </div>
+
+        <div class="timeline-item upcoming">
+          <div class="year">brzy</div>
+          <div>
+            <h4>Připravovaný text</h4>
+            <div class="meta">Připravuje se</div>
+            <p>Na pátém textu právě pracuji — jakmile bude hotový, najdete odkaz na něj přímo tady.</p>
+            <button type="button" class="readlink" disabled>Již brzy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
+          </div>
+        </div>
+
       </div>
     </div>
-
-    <div class="piece">
-      <div class="idx">04</div>
-      <div>
-        <h2>Improvizační cimbálový koncert i noisové tektonické desky. Ostrava uctila památku obětí střelby na FF UK</h2>
-        <div class="tags"><span class="tag">Pres.UP</span><span class="tag">2025</span><span class="tag">Publicistika / kultura</span></div>
-        <p class="desc">Text o pietním koncertu v Ostravě, který spojil improvizovanou hudbu a noise s připomínkou obětí střelby na Filozofické fakultě UK.</p>
-        <button type="button" class="readlink">Číst článek <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
-      </div>
-    </div>
-
-    <div class="piece upcoming">
-      <div class="idx">05</div>
-      <div>
-        <h2>Připravovaný text</h2>
-        <div class="tags"><span class="tag">Připravuje se</span></div>
-        <p class="desc">Na pátém textu právě pracuji — jakmile bude hotový, najdete odkaz na něj přímo tady.</p>
-        <button type="button" class="readlink" disabled>Již brzy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M7 17L17 7M9 7h8v8"/></svg></button>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    Portfolio připravené pro pohovor na pozici redaktorky newsletteru Checkout (Voxpot), 2026.
-  </footer>
-
+  </section>
 </div>
+
+<footer class="dark" id="kontakt">
+  <div class="wrap">
+    <div>
+      <h5>Telefon</h5>
+      <a href="tel:+420775953951">+420 775 953 951</a>
+    </div>
+    <div>
+      <h5>Email</h5>
+      <a href="mailto:petja.smidova@gmail.com">petja.smidova@gmail.com</a>
+    </div>
+  </div>
+  <div class="copy">Portfolio připravené pro pohovor na pozici redaktorky newsletteru Checkout (Voxpot), 2026.</div>
+</footer>
+
 </body>
 </html>
